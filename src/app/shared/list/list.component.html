@@ -4,8 +4,7 @@
             <p-card  styleClass="mb-4">
                 <div class="flex justify-between items-center">
                     <h1>{{title}}</h1>
-                    <button pButton pRipple [label]=buttonTitle icon="pi pi-plus" class="mainBtn"
-                    (click)="addNew()"></button>
+                  
                 </div>
               
             </p-card>
@@ -36,13 +35,17 @@
                                 <span *ngIf="!col.isDate &&!col.isCurrancy && !col.isColoredRow && ([col.field]) != 'AvailablePieces'" class="mx-1 ">
                                     {{(entity[col.field])}}                                  
                                 </span>
-                                <span *ngIf="([col.field]) == 'AvailablePieces'" [ngClass]="(entity[col.field]) < 50 ?'text-red-600' : ''"> 
+                                <span *ngIf="([col.field]) == 'AvailablePieces'" [ngClass]="(entity[col.field]) < 50 ?'coloredCol' : ''"> 
                                       {{(entity[col.field])}}
                                     </span>
 
                                 <span *ngIf="col.isCurrancy">
                                     {{entity[col.field] | currency }}
                                 </span>
+                                <span *ngIf="col.isDate">
+                                    {{entity[col.field] | date }}
+                                </span>
+                             
                              
                             </span>
 

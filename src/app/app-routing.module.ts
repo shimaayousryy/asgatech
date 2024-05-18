@@ -11,6 +11,8 @@ import { AppLayoutComponent } from "./layout/app.layout.component";
                 children: [
                     { path: '', loadChildren: () => import('./demo/components/product/product.module').then(m => m.ProductModule) },
                     { path: 'product', loadChildren: () => import('./demo/components/product/product.module').then(m => m.ProductModule) },
+                    { path: 'order', loadChildren: () => import('./demo/components/order/order.module').then(m => m.OrderModule) },
+                    
                   
                 
                 ]
