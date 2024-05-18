@@ -149,9 +149,9 @@ export class ListComponent implements OnInit {
             // }
         ];
         console.log(this.currMenuRecord);
-        
+         
         this.addationalMenuItems?.forEach(element => {
-
+            debugger
             if (element.visibleCommand != undefined) {
                 if (element.visibleCommand()) this.menuItems.push(element);
             }

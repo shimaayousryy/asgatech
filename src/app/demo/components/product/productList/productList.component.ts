@@ -20,7 +20,7 @@ export class ProductListComponent {
   productList:Porduct[]=[]
     listColumns: ListColumn[];
     pageResult: PageResult;
-    addationalMenuItems: MenuItem[];
+    addationalMenuItems
 
     pagination={
       rows:10,
@@ -44,7 +44,7 @@ export class ProductListComponent {
       new ListColumn({ field: 'AvailablePieces', hide: false, header: 'Available Pieces', width: 20}),
     ];
     this.addationalMenuItems = [
-      { label:'Edit' , visible: this.listModal?.currMenuRecord?.availablePieces < 50 , icon: 'pi pi-fw pi-check', command: () => this.edit(),
+      { label:'Edit' , visible:true ,visibleCommand:()=>this.listModal?.currMenuRecord?.AvailablePieces < 50 , icon: 'pi pi-fw pi-check', command: () => this.edit(this.listModal?.currMenuRecord?.id),
     }
     ];
   }
@@ -59,7 +59,7 @@ export class ProductListComponent {
     this.getList(event)
   }
 
-  edit(){
+  edit(value){
 
   }
   
