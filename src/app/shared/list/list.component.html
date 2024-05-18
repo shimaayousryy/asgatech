@@ -1,0 +1,84 @@
+<div class="grid">
+    <div class="col-12">
+        <div class="card">
+            <p-card  styleClass="mb-4">
+                <div class="flex justify-between items-center">
+                    <h1>{{title}}</h1>
+                    <button pButton pRipple [label]=buttonTitle icon="pi pi-plus" class="mainBtn"
+                    (click)="addNew()"></button>
+                </div>
+              
+            </p-card>
+
+            <p-table #dt [value]="pageResult.result"  [lazy]="true"  [lazy]="true" 
+                [loading]="loading" (onLazyLoad)="getPage($event)" [totalRecords]="pageResult.total"
+                [columns]="listColumns" [rows]="10"   (onPage)="pageChange($event)"
+                [paginator]="paginator" [rowsPerPageOptions]="rowsPerPageOptions" [showCurrentPageReport]="true"
+                currentPageReportTemplate="Showing {first} To {last} Of {totalRecords} Entries" [rowHover]="true"
+                dataKey="id">
+            
+                <ng-template pTemplate="header">
+                    <tr>
+                       <th>#</th>
+                        <th  *ngFor="let col of listColumns | hideColumn" >
+                            {{col.header}}
+                        </th>
+                        <th  *ngIf="withAction" [pSortableColumn]="undefined">Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-entity let-i="rowIndex">
+                    <tr>
+                        <td>{{i+1}}</td>
+                        <td *ngFor="let col of listColumns | hideColumn" 
+                            [style]="'width:'+ col.width +'%; min-width:' + (col.minWidth>0? col.minWidth : '10') + 'rem;'">
+                            <span class="p-column-title">{{entity[col.header]}}</span>
+                            <span class="">
+                                <span *ngIf="!col.isDate &&!col.isCurrancy && !col.isColoredRow && ([col.field]) != 'AvailablePieces'" class="mx-1 ">
+                                    {{(entity[col.field])}}                                  
+                                </span>
+                                <span *ngIf="([col.field]) == 'AvailablePieces'" [ngClass]="(entity[col.field]) < 50 ?'text-red-600' : ''"> 
+                                      {{(entity[col.field])}}
+                                    </span>
+
+                                <span *ngIf="col.isCurrancy">
+                                    {{entity[col.field] | currency }}
+                                </span>
+                             
+                            </span>
+
+                        </td>
+                     
+                        <td *ngIf="withAction" style="width:20%; min-width: 10rem;"><span
+                                class="p-column-title">Actions</span>
+                            <div class="flex options-dropdown justify-center">
+                                <p-menu #menu [popup]="true" [model]="menuItems" appendTo="body"></p-menu>
+                                <button *ngIf="hideActionWithReadOnly||!entity.readOnly" type="button" pButton
+                                    icon="pi pi-ellipsis-v" (click)="onRecordChange(entity,i); menu.toggle($event)"
+                                    class="p-button-text p-button-secondary"
+                                    [style]="{margin: '0', padding:'0'}"></button>
+                            </div>
+                        </td>
+
+                     
+
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+
+
+        <p-dialog [(visible)]="deleteEntityDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}">
+            <div class="flex items-center justify-center">
+                <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
+                <span *ngIf="currMenuRecord">{{DeleteMessage}}</span>
+            </div>
+            <ng-template pTemplate="footer">
+                <button pButton pRipple icon="pi pi-times" class="p-button-text" label="No"
+                    (click)="deleteEntityDialog = false"></button>
+                <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Yes"
+                    (click)="delete()"></button>
+            </ng-template>
+        </p-dialog>
+    </div>
+</div>
+

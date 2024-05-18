@@ -21,9 +21,14 @@ import { MenuModule } from 'primeng/menu';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { CarouselModule } from 'primeng/carousel';
 import { DialogModule } from 'primeng/dialog';
+import { ListComponent } from './list/list.component';
+import { HideColumn } from './pipe/hideColumn';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ListComponent,
+    HideColumn,
+  ],
   imports: [
     ReactiveFormsModule,
     FormsModule,
@@ -52,7 +57,8 @@ import { DialogModule } from 'primeng/dialog';
 
 ],
 exports: [
-  
+    ListComponent,
+    HideColumn,
     ReactiveFormsModule,
     FormsModule,
     CardModule,
