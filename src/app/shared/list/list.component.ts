@@ -8,38 +8,25 @@ import { PageResult } from '../models/pageResult';
     templateUrl: './list.component.html',
     styleUrls: [ './list.component.scss'],
     selector: 'app-list',
-    // providers: [DynamicDialogRef],
 })
 
 export class ListComponent implements OnInit {
 
     //**events
     @Output() getPageEvent = new EventEmitter<any>();
-    @Output() addNewEvent = new EventEmitter<any>();
-    @Output() editEvent = new EventEmitter<any>();
     @Output() viewEvent = new EventEmitter<any>();
-    @Output() deleteEvent = new EventEmitter<any>();
-    @Output() onFilterEvent = new EventEmitter<any>();
-    @Output() onFilterClearEvent = new EventEmitter<any>();
-
+ 
     //**
 
     //**inputs
     @Input() listColumns: ListColumn[];
     @Input() title: string;
     @Input() pageResult: PageResult;
-    @Input() parentPermission: string;
-    @Input() loading: boolean;
     
-    @Input() buttonTitle:string ;
-    @Input() hideUpdate = "true";
-    @Input() hideDelete = "true";
-    @Input() hideCreate = true;
-    @Input() withAddNew = false;
+   
+
     @Input() withAction = true;
     @Input() paginator: boolean = true;
-    @Input() hideActionWithReadOnly: boolean = false;
-    @Input() DeleteMessage: string = '';
     @Output() onChange = new EventEmitter();
 
     
@@ -54,15 +41,10 @@ export class ListComponent implements OnInit {
     @Input() filterEntityElements: any;
     @Input() addationalMenuItems: any[] = [];
 
-    //**flags
-    entityDialog: boolean;
-    deleteEntityDialog: boolean = false;
-    submitted: boolean;
-    createPermission: boolean;
-    currSortField: string;
-    currSortOrder: string;
-    filterList: any = undefined
-    isFilter: boolean = false
+
+  
+
+ 
     
     //**
     @ViewChild('dt') table: Table;
@@ -73,7 +55,6 @@ export class ListComponent implements OnInit {
 
     
     first = 0;
-
     rows = 10;
     constructor(
     ) {
@@ -82,7 +63,6 @@ export class ListComponent implements OnInit {
 
     ngOnInit() {
         this.menuItems = [];
-       this.buttonTitle = 'Create New'
     
     }
 
@@ -97,13 +77,10 @@ export class ListComponent implements OnInit {
 
     pageChange(event) {
         this.onChange.emit(event);
-
         this.first = event.first;
         this.rows = event.rows;
     }
-    addNew() {
-        this.addNewEvent.emit();
-    }
+  
 
     next() {
         this.first = this.first + this.rows;
@@ -114,29 +91,14 @@ export class ListComponent implements OnInit {
     }
 
 
-    edit() {
-        this.editEvent.emit({ id: this.currMenuRecord.id });
-    }
-
-  
-  
-
-    delete() {
-        this.deleteEntityDialog = false;
-        this.deleteEvent.emit({ id: this.currMenuRecord.id, index: this.currMenuRecordIndex });
-        this.refreshList()
-    }
-
+ 
     onRecordChange(currentRecord: any, currentIndex: number) {
-        
         this.currMenuRecord = currentRecord;
         this.currMenuRecordIndex = currentIndex;
         this.initializeMenu();
     }
 
-    showDeleteDialog() {
-        this.deleteEntityDialog = true;
-    }
+
 
     initializeMenu() {
         
@@ -144,11 +106,8 @@ export class ListComponent implements OnInit {
             {
                 label:'View' , visible: true , icon: 'pi pi-eye', command: () => this.view(),
             },
-            // {
-            //     label:'Delete' , visible: this.withAction , icon: 'pi pi-fw pi-trash', command: () => this.showDeleteDialog(),
-            // }
+       
         ];
-        console.log(this.currMenuRecord);
          
         this.addationalMenuItems?.forEach(element => {
             debugger
@@ -162,11 +121,11 @@ export class ListComponent implements OnInit {
     }
 
     refreshList() {
-
         this.getPage(this.table.createLazyLoadMetadata());
     }
 
    view(){
+    this.viewEvent.emit({ id: this.currMenuRecord.id });
 
    }
 

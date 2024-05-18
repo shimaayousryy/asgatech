@@ -1,0 +1,9 @@
+<app-list #list
+[listColumns]=listColumns 
+[pageResult]=pageResult
+ [title]="'Manage users'"
+ (onChange)="getList($event)"
+ [addationalMenuItems]="addationalMenuItems"
+
+>
+</app-list>

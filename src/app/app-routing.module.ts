@@ -12,6 +12,7 @@ import { AppLayoutComponent } from "./layout/app.layout.component";
                     { path: '', loadChildren: () => import('./demo/components/product/product.module').then(m => m.ProductModule) },
                     { path: 'product', loadChildren: () => import('./demo/components/product/product.module').then(m => m.ProductModule) },
                     { path: 'order', loadChildren: () => import('./demo/components/order/order.module').then(m => m.OrderModule) },
+                    { path: 'user', loadChildren: () => import('./demo/components/user/user.module').then(m => m.UserModule) },
                     
                   
                 
