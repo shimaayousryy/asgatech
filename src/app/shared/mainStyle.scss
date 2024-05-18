@@ -1,0 +1,84 @@
+.p-inputgroup{
+    @apply border rounded-main_radius w-full mt-2 px-2;
+    input{
+        @apply w-full 
+    }
+    ::ng-deep .p-inputgroup-addon{
+        @apply text-main_color py-3 px-2;
+        background-color: unset;
+        min-width: unset;
+    }
+}
+
+input:focus{
+    outline: none;
+}
+::ng-deep{
+    .p-inputwrapper{
+        @apply w-full h-full ; 
+    }
+     th {
+        @apply py-3 px-3 text-lg text-main_color font-medium ;
+      }
+}
+
+.mainBtn{
+    @apply bg-main_color text-white rounded-main_radius px-5 py-2;
+}
+.secondaryBtn{
+    @apply border bg-white text-main_color border-main_color rounded-main_radius px-5 py-2;
+}
+td , th{
+    @apply text-center border-b
+}
+
+.cardParent{
+    @apply grid grid-cols-12 gap-4;
+    .cardCol{
+        @apply 2xl:col-span-3 xl:col-span-3 lg:col-span-4 md:col-span-6 col-span-12 mt-3;
+    }
+}
+
+::ng-deep{
+    .p-dropdown , .p-calendar{
+        @apply border rounded-main_radius w-full  px-3 border-stone-900
+    }
+    .p-calendar{
+        @apply   py-2
+    }
+    .p-menu {
+        padding: 0.25rem 0;
+        width: 9.5rem;
+      }
+      .p-menu .p-menuitem > .p-menuitem-content .p-menuitem-link .p-menuitem-text {
+        margin: 2px 10px
+      }
+      .p-highlight{
+        @apply bg-main_color text-white;
+      }
+}
+
+
+h3{
+    @apply font-bold text-xl;
+}
+
+::ng-deep .p-button-group .p-button:first-of-type:not(:only-of-type),::ng-deep .p-button-group p-button:first-of-type:not(:only-of-type) .p-button,::ng-deep .p-buttonset .p-button:first-of-type:not(:only-of-type),::ng-deep .p-buttonset p-button:first-of-type:not(:only-of-type) .p-button , ::ng-deep  .p-buttonset .p-button:last-of-type:not(:only-of-type) {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+}
+::ng-deep .p-selectbutton{
+    @apply border rounded-main_radius w-fit ; 
+}
+label{
+    @apply text-main_color;
+}
+
+
+
+input{
+    @apply border rounded-main_radius w-full py-3 px-3 border-stone-600
+}
