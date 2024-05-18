@@ -125,7 +125,7 @@ export class ListComponent implements OnInit {
     }
 
    view(){
-    this.viewEvent.emit({ id: this.currMenuRecord.id });
+    this.viewEvent.emit({ currentRow: this.currMenuRecord });
 
    }
 

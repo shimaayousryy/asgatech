@@ -1,0 +1,65 @@
+<p-card>
+    <h1 class="border-b pb-3 text-xl font-bold">Order Details</h1>
+     <div class="mt-3">
+        <label class="text-main_color  text-lg">OrderNO : </label>
+        <span>{{selectedOrder?.OrderId}}</span>
+     </div>
+     <div class="mt-3">
+        <label class="text-main_color  text-lg">Order Date : </label>
+        <span>{{selectedOrder?.OrderDate | date}}</span>
+     </div>
+     <div class="mt-3">
+        <label class="text-main_color  text-lg">Payment Type : </label>
+        <span>{{selectedOrder?.PaymentType}}</span>
+     </div>
+</p-card>
+
+<p-card>
+    <h1 class="border-b pb-3 text-xl font-bold">Customer Details</h1>
+     <div class="mt-3">
+        <label class="text-main_color  text-lg">Name : </label>
+        <span>{{userSelected?.Name}}</span>
+     </div>
+     <div class="mt-3">
+        <label class="text-main_color  text-lg">Phone : </label>
+        <span>{{userSelected?.Phone}}</span>
+     </div>
+     <div class="mt-3">
+        <label class="text-main_color  text-lg">Email : </label>
+        <span>{{userSelected?.Email}}</span>
+     </div>
+     <div class="mt-3">
+        <label class="text-main_color  text-lg">Address : </label>
+        <span>{{userSelected?.Address}}</span>
+     </div>
+</p-card>
+<p-card>
+    <h1 class="border-b pb-3 text-xl font-bold">products Details</h1>
+     <div *ngFor="let product of productSelected"  class="border-b pb-3">
+      <div class="grid grid-cols-12 gap-6">
+        <div class="flex flex-col 2xl:col-span-6 xl:col-span-6 lg:col-span-6 md:col-span-6 col-span-12 2xl:mt-3 md:mt-2">
+            <div class="mt-3" >
+                <label class="text-main_color  text-lg">Product Name : </label>
+                <span>{{product?.ProductName}}</span>
+             </div>
+    
+             <div class="mt-3" >
+                <label class="text-main_color  text-lg">Product Price : </label>
+                <span>{{product?.ProductPrice}}</span>
+             </div>
+    
+             <div class="mt-3" >
+                <label class="text-main_color  text-lg">Available Quantity : </label>
+                <span>{{product?.AvailablePieces}}</span>
+             </div>
+        </div>
+
+        <div class="flex flex-col 2xl:col-span-6 xl:col-span-6 lg:col-span-6 md:col-span-6 col-span-12 2xl:mt-3 md:mt-2">
+            <img [src]="product.ProductImg" alt="" width="200" height="200">
+        </div>
+      </div>
+    </div>
+    
+
+</p-card>
+

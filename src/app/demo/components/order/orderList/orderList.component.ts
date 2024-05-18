@@ -54,9 +54,10 @@ export class OrderListComponent {
     this.getList(event)
   }
 
-  // edit(value){
-
-  // }
+  view(value){
+    debugger
+    this.router.navigate(['/order/orderDetail' , value.currentRow.OrderId])
+  }
   
 
 }
