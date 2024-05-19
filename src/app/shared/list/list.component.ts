@@ -15,15 +15,16 @@ export class ListComponent implements OnInit {
     //**events
     @Output() getPageEvent = new EventEmitter<any>();
     @Output() viewEvent = new EventEmitter<any>();
- 
+    @Output() addEvent = new EventEmitter<any>();
     //**
 
     //**inputs
     @Input() listColumns: ListColumn[];
     @Input() title: string;
     @Input() pageResult: PageResult;
-    
-   
+    @Input() addButton:boolean = false;
+    @Input() addationalMenuItems: any[] = [];
+
 
     @Input() withAction = true;
     @Input() paginator: boolean = true;
@@ -38,8 +39,7 @@ export class ListComponent implements OnInit {
     items: MenuItem[];
 
     //**
-    @Input() filterEntityElements: any;
-    @Input() addationalMenuItems: any[] = [];
+
 
 
   
@@ -66,8 +66,9 @@ export class ListComponent implements OnInit {
     
     }
 
-    getIsSearch() {
-        return ListComponent.isSearch;
+
+    onAddNew(){
+        this.addEvent.emit()
     }
 
 

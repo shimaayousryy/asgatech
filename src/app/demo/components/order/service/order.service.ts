@@ -11,17 +11,18 @@ export class OrderService {
 
   getOrders():Observable<any>{
     return this.http.get<any>('../../../../assets/json/orders.json' )
-    
+
   }
 
   getOrder(orderId):Observable<any>{
-    
     return this.http.get<any>('../../../../assets/json/orders.json').pipe(map(data =>{
       return  data.filter(x=> x.OrderId == orderId)
     }
-      
     ))
-    
+  }
+
+  addOrder(order):Observable<any>{
+    return this.http.get(`assets/json/orders.json`, order)
   }
 
 

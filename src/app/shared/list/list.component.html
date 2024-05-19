@@ -4,7 +4,10 @@
             <p-card  styleClass="mb-4">
                 <div class="flex justify-between items-center">
                     <h1>{{title}}</h1>
-                  
+                    <button class="rounded-main_radius bg-main_color text-white px-5 py-3 flex items-center" *ngIf="addButton" (click)="onAddNew()">
+                        <i class="pi pi-plus mr-2"></i>
+                        <span>Create New</span>
+                    </button>
                 </div>
               
             </p-card>
@@ -43,7 +46,7 @@
                                     {{entity[col.field] | currency }}
                                 </span>
                                 <span *ngIf="col.isDate">
-                                    {{entity[col.field] | date }}
+                                    {{entity[col.field] | date:'mediumDate' }}
                                 </span>
                              
                              

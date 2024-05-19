@@ -23,6 +23,8 @@ import { CarouselModule } from 'primeng/carousel';
 import { DialogModule } from 'primeng/dialog';
 import { ListComponent } from './list/list.component';
 import { HideColumn } from './pipe/hideColumn';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,9 @@ import { HideColumn } from './pipe/hideColumn';
     MenuModule,
     OverlayPanelModule,
     CarouselModule,
-    DialogModule
+    DialogModule,
+    MultiSelectModule,
+    ConfirmDialogModule
 
 ],
 exports: [
@@ -83,6 +87,8 @@ exports: [
     OverlayPanelModule,
     CarouselModule,
     DialogModule,
+    MultiSelectModule,
+    ConfirmDialogModule
     
     
 

@@ -57,10 +57,9 @@ export class OrderDetailsComponent {
   findProduct(){
     this.productService.getProducts().subscribe(response =>{
         for(let i of this.selectedOrder.Products){
-            this.productSelected.push(response.filter(x => x.ProductId == i.ProductId)[0])
+            this.productSelected.push({...response.filter(x => x.ProductId == i.ProductId)[0] , Quantity:i.Quantity})
 
         }
-        console.log('dataaaa',this.productSelected)
 
     })
   }

@@ -5,6 +5,7 @@ import { PageResult } from "src/app/shared/models/pageResult";
 import { ListComponent } from "src/app/shared/list/list.component";
 import { Order } from "../service/order.model";
 import { OrderService } from "../service/order.service";
+import { FormControl, FormGroup, UntypedFormGroup, Validators } from "@angular/forms";
 
 
 @Component({
@@ -18,7 +19,7 @@ export class OrderListComponent {
   @ViewChild('list') listModal: ListComponent;
     listColumns: ListColumn[];
     pageResult: PageResult;
-    
+    visible:boolean = false
 
     pagination={
       rows:10,
@@ -34,6 +35,7 @@ export class OrderListComponent {
    
   
   ngOnInit(): void {
+
     this.getList(this.pagination)
     this.listColumns = [
       new ListColumn({ field: 'id', header: '#ID', width: 5, hide: true }),
@@ -41,7 +43,7 @@ export class OrderListComponent {
       new ListColumn({ field: 'OrderDate', header: 'Order Date',  hide: false,isDate:true, width: 40 }),
       new ListColumn({ field: 'PaymentType', hide: false, header: 'PaymentType', width: 40}),
     ];
-  
+   
   }
   getList(event){
     this.orderService.getOrders().subscribe(response =>{
@@ -49,16 +51,21 @@ export class OrderListComponent {
       this.pageResult.total = response.length
     })
   }
-  
+   
   changePage(event){
     this.getList(event)
   }
 
   view(value){
-    debugger
+    
     this.router.navigate(['/order/orderDetail' , value.currentRow.OrderId])
   }
-  
+
+  onAdd(){
+    this.router.navigate(['/order/create'])
+  }
+
+ 
 
 }
 

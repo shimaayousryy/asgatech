@@ -1,8 +1,12 @@
 <app-list #list
-[listColumns]=listColumns 
-[pageResult]=pageResult
- [title]="'Manage Orders'"
- (onChange)="getList($event)"
- (viewEvent)="view($event)"
+    [listColumns]=listColumns 
+    [pageResult]=pageResult
+    [title]="'Manage Orders'"
+    (onChange)="getList($event)"
+    (viewEvent)="view($event)"
+    (addEvent)="onAdd()"
+    [addButton]="true"
 >
 </app-list>
+
+  

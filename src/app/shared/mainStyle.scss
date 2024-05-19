@@ -23,7 +23,7 @@ input:focus{
 }
 
 .mainBtn{
-    @apply bg-main_color text-white rounded-main_radius px-5 py-2;
+    @apply bg-main_color text-white rounded-main_radius px-5 py-2 mr-3;
 }
 .secondaryBtn{
     @apply border bg-white text-main_color border-main_color rounded-main_radius px-5 py-2;
@@ -40,11 +40,11 @@ td , th{
 }
 
 ::ng-deep{
-    .p-dropdown , .p-calendar{
-        @apply border rounded-main_radius w-full  px-3 border-stone-900
+    .p-dropdown , .p-calendar , .p-multiselect , .p-inputnumber {
+        @apply border rounded-main_radius w-full   px-3 border-stone-400
     }
-    .p-calendar{
-        @apply   py-2
+    .p-calendar , .p-inputnumber-input{
+        @apply   py-3
     }
     .p-menu {
         padding: 0.25rem 0;
